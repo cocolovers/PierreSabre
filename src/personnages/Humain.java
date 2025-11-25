@@ -5,7 +5,7 @@ public class Humain {
 	private String boisson;
 	protected int argent;
 	protected int nbConnaissance;
-	protected Humain[] memoire = new Humain[30];
+	protected Humain[] memoire = new Humain[3];
 
 	public Humain(String nom, String boisson, int argent) {
 		super();
@@ -57,8 +57,8 @@ public class Humain {
 	}
 	
 	private void memoriser(Humain humain) {
-		if (nbConnaissance == 30) {
-			for(int i=1;i<=30;i++) memoire[i-1] = memoire[i];
+		if (nbConnaissance == 3) {
+			for(int i=1;i<3;i++) memoire[i-1] = memoire[i];
 			nbConnaissance -= 1;
 		}
 		memoire[nbConnaissance] = humain;
@@ -79,8 +79,9 @@ public class Humain {
 	
 	public void listerConnaissance() {
 		parler("Je connais beaucoup de monde dont: ");
-		for (int i=0;i<nbConnaissance;i++)
+		for (int i=0;i<=nbConnaissance-2;i++)
 			System.out.print(memoire[i] + ", ");
+		System.out.print(memoire[nbConnaissance-1]);
 		System.out.print("\n");
 		
 	}
